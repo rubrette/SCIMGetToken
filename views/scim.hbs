@@ -1,0 +1,60 @@
+<h1>Your SCIM token is:</h1>
+<div>
+  <input type="text" name="token" id="token" value="{{token}}">
+</div>
+<div>
+  <h3>Authenticated user:</h3>
+  <p>User: {{me.displayName}}</p>
+  <p>Email: {{me.emails}}</p>
+  <p>OrgId: {{me.utf8OrgId}}</p>
+  <br>
+</div>
+
+<div class="borderedDiv">
+  <div class="linebrake">
+    <h2>SCIM Test Output</h2>
+  </div>
+  <div >
+    <div>
+      <h3>Users in Org:</h3>
+    </div>
+    <table>
+      <thead>
+        <th>DisplayName</th>
+        <th>id</th>
+      </thead>
+      <tbody>
+        {{#each SCIMUsersData.Resources}}
+        <tr>
+          <td>{{displayName}}</td>
+          <td>{{{id}}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <div>
+      <h3>Groups in Org:</h3>
+    </div>
+    <table>
+      <thead>
+        <th>DisplayName</th>
+        <th>id</th>
+        <th>Members</th>
+      </thead>
+      <tbody>
+        {{#each SCIMGroupsData.Resources}}
+        <tr>
+          <td>{{displayName}}</td>
+          <td>{{{id}}}</td>
+          <td>{{members.length}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+
+</script>

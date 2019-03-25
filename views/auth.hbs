@@ -1,30 +1,32 @@
 <h1>Your SCIM token is:</h1>
+<form action="/scim" method="POST">
 <div>
-<input type="text" name="token" id="token">
+  <input type="text" name="token" id="token">
 </div>
 <div>
   <!-- The button used to copy the text -->
-<button onclick="copyToClipboard()">Copy text</button>
+  <button type="button" onclick="copyToClipboard()">Copy text</button>
 </div>
-
+<div>
+  <button type="submit" id="tokenSend">SCIM Details</button>
+</div>
+</form>
 <script>
   var token = window.location.hash.substring(1).split("=")[1].split('&')[0];
-  console.log(token)
-  document.getElementById('token').value= token;
+  document.getElementById('token').value = token;
 
+  function copyToClipboard() {
+    /* Get the text field */
+    var copyText = document.getElementById("token");
 
-function copyToClipboard() {
-  /* Get the text field */
-  var copyText = document.getElementById("token");
+    /* Select the text field */
+    copyText.select();
 
-  /* Select the text field */
-  copyText.select();
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
 
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
-
-  /* Alert the copied text */
-  alert("Copied the text: " + copyText.value);
-}
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+  }
 
 </script>
